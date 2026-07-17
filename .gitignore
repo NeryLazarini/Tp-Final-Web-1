@@ -1,0 +1,50 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencias
+node_modules/
+.pnp/
+.pnp.js
+
+# Archivos de entorno 
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Directorios de build
+dist
+dist-ssr
+build
+out
+
+# Archivos de editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Otros archivos temporales
+coverage
+*.tsbuildinfo
+.eslintcache
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Sistema operativo
+Thumbs.db
+Desktop.ini
