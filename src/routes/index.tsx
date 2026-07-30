@@ -1,5 +1,5 @@
 import{lazy, Suspense} from 'react';
-import{RouteObject} from 'react-router-dom';
+import type { RouteObject } from 'react-router-dom';
 import PlanillaPrincipal from '../components/templates/PlanillaPrincipal';
 import Cargando from '../components/atoms/Cargando';
 
@@ -11,10 +11,10 @@ const NuevoProducto = lazy(() => import('../pages/NuevoProducto'));
 const Perfil = lazy(() => import('../pages/Perfil'));
 const NoEncontrado = lazy(()=> import('../pages/NoEncontrado'));
 
-export const rutas: routeObject[] = [
+export const rutas: RouteObject[] = [
     {
         path: '/',
-        element: <PlantillaPrincipal />,
+        element: <PlanillaPrincipal />,
         children: [
       { index: true, element: <Inicio /> },
       { path: 'productos', element: <ListaProductos /> },
