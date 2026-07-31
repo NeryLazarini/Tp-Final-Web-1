@@ -1,6 +1,9 @@
-/* src/components/molecules/StatCard.css */
-
 .stat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 2px solid #333;
   padding: 20px;
   border-radius: 8px;
@@ -9,10 +12,11 @@
   color: #ffffff;
   font-family: sans-serif;
   transition: transform 0.2s ease-in-out;
+  text-align: center;
 }
 
 .stat-card:hover {
-  transform: translateY(-5px); /* Pequeño efecto de elevación al pasar el mouse */
+  transform: translateY(-5px);
 }
 
 .stat-card-title {
@@ -28,6 +32,8 @@
 
 .stat-card-link {
   display: block;
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
   padding: 10px 16px;
   background-color: #d32f2f;
@@ -39,5 +45,5 @@
 }
 
 .stat-card-link:hover {
-  background-color: #b71c1c; /* Rojo más oscuro para el hover del botón */
+  background-color: #b71c1c;
 }

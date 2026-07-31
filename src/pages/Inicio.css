@@ -1,0 +1,35 @@
+.inicio-container {
+  padding: 2rem;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.inicio-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.inicio-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.inicio-header p {
+  color: #aaaaaa;
+  margin: 0;
+}
+
+.inicio-cards-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
