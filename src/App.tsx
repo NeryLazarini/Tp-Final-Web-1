@@ -1,5 +1,5 @@
 import{useRoutes} from 'react-router-dom';
-import{rutas} from './routes';
+import{rutas} from '../src/routes/inxex';
 import{Suspense} from 'react';
 import Cargando from './components/atoms/Cargando';
 

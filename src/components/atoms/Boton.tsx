@@ -4,6 +4,7 @@ interface Props {
     disabled?: boolean;
     children: React.ReactNode;
     variante?: 'primario' | 'secundario' | 'peligro';
+    className?: string;
 }
 
 export default function Boton({ 
@@ -11,7 +12,8 @@ export default function Boton({
   type = 'button', 
   disabled = false, 
   children,
-  variante = 'primario' 
+  variante = 'primario',
+  className = ""
 }: Props) {
   const clases = {
     primario: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded',
@@ -23,7 +25,7 @@ export default function Boton({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${clases[variante]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      className={`${clases[variante]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
     >
       {children}
     </button>
