@@ -29,9 +29,7 @@ export default function FormularioProducto({
   estaGuardando,
   onDelete,
 }: Props) {
-  const [formData, setFormData] = useState<DatosProducto>(datosIniciales);
-
-    const[formData, setFormData] = useState<DatosProducto>(datosIniciales);
+    const [formData, setFormData] = useState<DatosProducto>(datosIniciales);
     const [errores, setErrores] = useState<Errores>({});
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
