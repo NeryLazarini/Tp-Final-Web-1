@@ -1,6 +1,7 @@
 import type { ChangeEvent } from 'react';
 
 interface Props {
+    id?: string;
     name: string;
     value: string | number;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function EntradaTexto({
+    id,
     name,
     value,
     onChange,
@@ -20,6 +22,7 @@ export default function EntradaTexto({
 }: Props) {
     return (
         <input
+        id={id}
         type={type}
         name={name}
         value={value}

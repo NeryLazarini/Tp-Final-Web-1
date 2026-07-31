@@ -13,6 +13,12 @@ interface Props{
     estaGuardando: boolean;
 }
 
+interface Errores {
+    nombre?: string;
+    precio?: string;
+    stock?: string;
+}
+
 export default function FormularioProducto({
     datosIniciales,
     onSubmit,
@@ -21,10 +27,9 @@ export default function FormularioProducto({
     estaGuardando,
 }: Props) {
 
-    //Formulario local
     const[formData, setFormData] = useState<DatosProducto>(datosIniciales);
+    const [errores, setErrores] = useState<Errores>({});
 
-    //Manejador de cambios
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     {
         const {name, value} = e.target;
@@ -33,63 +38,79 @@ export default function FormularioProducto({
             [name]: name === 'precio' || name ==='stock' ? Number(value) : value,
         }));
     };
+
+    const validar = (): boolean => {
+        const nuevosErrores: Errores = {};
+
+        if(!formData.nombre || formData.nombre.trim() === ''){
+            nuevosErrores.nombre = 'El nombre es obligatorio.';
+        }
+        if(isNaN(formData.precio) || formData.precio < 0){
+            nuevosErrores.precio = 'El precio debe ser un número positivo.';
+        }
+        if(isNaN(formData.stock) || formData.stock < 0){
+            nuevosErrores.stock = 'El stock debe ser un número positivo.';
+        }
+
+        setErrores(nuevosErrores);
+        return Object.keys(nuevosErrores).length === 0;
+    };
     
-    //Envio formulario
     const handleSubmit = async (e: FormEvent)=>{
         e.preventDefault();
-        //validacion
-        if(!formData.nombre || formData.nombre.trim() === ''){
-            alert("El nombre es obligatorio");
-            return;
-        }
-        if(formData.precio < 0 || formData.stock < 0){
-            alert('El precio y el stock deben ser numeros positivos');
-            return;
-        }
+        if(!validar()) return;
         await onSubmit(formData);
     };
-    return(
+
+return(
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow">
-            <CampoFormulario
-            id="nombre"
-            label="nombre"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-            required 
-            />
-            
-            <CampoFormulario
-            id="nombre"
-            label="nombre"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-            required 
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <CampoFormulario
+                id="nombre"
+                label="Nombre"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                required 
+                error={errores.nombre}
+                />
 
-            <CampoFormulario
-            id="nombre"
-            label="nombre"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-            required 
-            />
+                <CampoFormulario
+                id="precio"
+                label="Precio"
+                name="precio"
+                type="number"
+                value={formData.precio}
+                onChange={handleChange}
+                required
+                error={errores.precio}
+                />
 
-            <div className="mb-4">
-        <Etiqueta htmlFor="descripcion">Descripción</Etiqueta>
-        <textarea
-          id="descripcion"
-          name="descripcion"
-          value={formData.descripcion || ''}
-          onChange={handleChange}
-          className="border border-gray-300 rounded px-3 py-2 w-full"
-          rows={3}
-        />
-      </div>
+                <CampoFormulario
+                id="stock"
+                label="Stock"
+                name="stock"
+                type="number"
+                value={formData.stock}
+                onChange={handleChange}
+                required
+                error={errores.stock}
+                />
 
-            <div className="flex gap-2">
+                <div className="mb-4 md:col-span-2">
+                    <Etiqueta htmlFor="descripcion">Descripción</Etiqueta>
+                    <textarea
+                    id="descripcion"
+                    name="descripcion"
+                    value={formData.descripcion || ''}
+                    onChange={handleChange}
+                    className="border border-gray-300 rounded px-3 py-2 w-full"
+                    rows={3}
+                    />
+                </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-2 mt-4">
                 <Boton type="button" onClick={onCancel} variante="secundario" disabled={estaGuardando}>Cancelar</Boton>
                 <Boton type="submit" variante="primario" disabled={estaGuardando}>
                 {estaGuardando ? 'Guardando...' : textoBoton}

@@ -11,7 +11,7 @@ interface Props{
     type?: 'text' | 'number';
     required?: boolean;
     placeholder?: string;
-
+    error?: string;
 }
 
 export default function CampoFormulario({
@@ -23,11 +23,13 @@ export default function CampoFormulario({
     type = 'text',
     required = false,
     placeholder,
+    error,
 }: Props) {
     return (
         <div className="mb-4">
             <Etiqueta htmlFor={id}>{label}</Etiqueta>
             <EntradaTexto
+            id={id}
             name={name}
             value={value}
             onChange={onChange}
@@ -35,6 +37,7 @@ export default function CampoFormulario({
             required={required}
             placeholder={placeholder} 
             />
+            {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
         </div>
     );
 }
