@@ -1,16 +1,18 @@
-import {useState} from 'react'; 
-import type {ChangeEvent, FormEvent} from 'react';
+// src/components/organisms/FormularioProducto.tsx
+import { useState } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 import Boton from '../atoms/Boton';
 import CampoFormulario from '../molecules/CampoFormulario';
 import type { DatosProducto } from '../../types/producto';
 import Etiqueta from '../atoms/Etiqueta';
 
-interface Props{
-    datosIniciales: DatosProducto;
-    onSubmit: (datos: DatosProducto) => Promise<void>;
-    onCancel: () => void;
-    textoBoton: string;
-    estaGuardando: boolean;
+interface Props {
+  datosIniciales: DatosProducto;
+  onSubmit: (datos: DatosProducto) => Promise<void>;
+  onCancel: () => void;
+  textoBoton: string;
+  estaGuardando: boolean;
+  onDelete?: () => Promise<void>; // Opcional para edición
 }
 
 interface Errores {
@@ -20,12 +22,14 @@ interface Errores {
 }
 
 export default function FormularioProducto({
-    datosIniciales,
-    onSubmit,
-    onCancel,
-    textoBoton,
-    estaGuardando,
+  datosIniciales,
+  onSubmit,
+  onCancel,
+  textoBoton,
+  estaGuardando,
+  onDelete,
 }: Props) {
+  const [formData, setFormData] = useState<DatosProducto>(datosIniciales);
 
     const[formData, setFormData] = useState<DatosProducto>(datosIniciales);
     const [errores, setErrores] = useState<Errores>({});

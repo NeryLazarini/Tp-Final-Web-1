@@ -11,6 +11,7 @@ export default function NuevoProducto() {
     stock: 0,
     descripcion: '',
     imagen: '',
+    categoria: '',
   };
 
   return (
