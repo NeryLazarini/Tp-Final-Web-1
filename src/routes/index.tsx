@@ -2,7 +2,7 @@ import{lazy, Suspense} from 'react';
 import type {RouteObject} from 'react-router-dom';
 import PlanillaPrincipal from '../components/templates/PlanillaPrincipal';
 import Cargando from '../components/atoms/Cargando';
-import EditarProducto from '../pages/editarProducto';
+import EditarProducto from '../pages/EditarProducto';
 
 //Carga perezosa para mejorar rendimiento
 const ListaProductos = lazy(()=> import('../pages/ListaProductos'));
