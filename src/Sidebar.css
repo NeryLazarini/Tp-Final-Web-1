@@ -1,0 +1,38 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #1e1e1e;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  padding-top: 60px; /* deja espacio para la hamburguesa */
+}
+
+.sidebar--abierto {
+  transform: translateX(0);
+}
+
+.boton-hamburguesa {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1100; /* por encima del sidebar */
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* En pantallas grandes, el sidebar queda fijo y visible siempre */
+@media (min-width: 768px) {
+  .sidebar {
+    transform: translateX(0);
+  }
+
+  .boton-hamburguesa {
+    display: none;
+  }
+}
